@@ -2,7 +2,9 @@
 
 ###
 # ATTENTION: This script will remove your current data folder and replace it with a 0.6.3 compatible one starting at 27k.
-#
+#            It will not touch your keys!
+#            It will only delete the data, session.db and pocket_evidence.db.
+#            Your validator will use the priv_val_state.json so it will know it's final state.
 ##
 
 
