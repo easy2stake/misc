@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###
+# ATTENTION: This script will remove your current data folder and replace it with a 0.6.3 compatible one starting at 27k.
+#
+##
+
+
 # General vars
 POCKET_USER=pocket 				#The linux user where your pocket node is installed. If you used root, simply change the name here with "root".
 POCKET_WORKDIR=/home/${POCKET_USER}/.pocket 	#This is your .pocket folder location. Example: /home/pocket/.pocket
