@@ -30,6 +30,10 @@ function restore_db_from_archive(){
   rm ${DOWNLOAD_LOCATION}/${DATA_FILE}
   wget ${DATA_SERVER}/${DATA_FILE} -P ${DOWNLOAD_LOCATION}
   tar -xvf ${DOWNLOAD_LOCATION}/${DATA_FILE} -C ${POCKET_WORKDIR}
+  
+  # Small fix to work with pocket archive
+  mv ${POCKET_WORKDIR}/node1/* ${POCKET_WORKDIR}/
+  
   chown -R ${POCKET_USER}:${POCKET_USER} ${POCKET_WORKDIR}
   rm ${DOWNLOAD_LOCATION}/${DATA_FILE}
 }
