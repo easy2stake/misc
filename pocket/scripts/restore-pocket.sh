@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # General vars
-POCKET_USER=pocket
-POCKET_WORKDIR=/home/${POCKET_USER}/.pocket
+POCKET_USER=pocket 				#The linux user where your pocket node is installed. If you used root, simply change the name here with "root".
+POCKET_WORKDIR=/home/${POCKET_USER}/.pocket 	#This is your .pocket folder location. Example: /home/pocket/.pocket
 
 # restore_db_from_archive vars
-DATA_SERVER=https://storage.googleapis.com/blockchains-data
-DATA_FILE=27Kbackup.tar
+DATA_SERVER=https://storage.googleapis.com/blockchains-data 	#Do not change this part if you want to download the official archive posted by pocket team
+DATA_FILE=27Kbackup.tar					 	#Do not change this part if you want to download the official archive posted by pocket team
 DOWNLOAD_LOCATION=/tmp
 
 # download_binary vars
-BINARY_LOCAL=/home/${POCKET_USER}/go/bin	#Insert your pocket binary location here
+BINARY_LOCAL=/home/${POCKET_USER}/go/bin	#Insert your pocket binary location here. Ex: /home/pocket/bin/ OR /home/pocket/go/bin, etc
 BINARY_RELEASE=https://raw.githubusercontent.com/easy2stake/misc/main/pocket/bin/pocket-RC-0.6.3 #This is a 0.6.3 release compiled on Ubuntu 18.04
 
 function delete_data_folders(){
@@ -32,8 +32,8 @@ function download_binary(){
 	chmod 700 ${BINARY_LOCAL}/pocket
 }
 
-systemctl stop -s KILL pocket
+systemctl stop -s KILL pocket 	#Replace "pocket" if you are using a diferent process name
 delete_data_folders
 download_binary
 restore_db_from_archive
-systemctl start pocket
+systemctl start pocket		#Replace "pocket" if you are using a diferent process name
