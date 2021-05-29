@@ -29,7 +29,7 @@ function delete_data_folders(){
 function restore_db_from_archive(){
   rm ${DOWNLOAD_LOCATION}/${DATA_FILE}
   wget ${DATA_SERVER}/${DATA_FILE} -P ${DOWNLOAD_LOCATION}
-  tar -xzvf ${DOWNLOAD_LOCATION}/${DATA_FILE} -C ${POCKET_WORKDIR}
+  tar -xvf ${DOWNLOAD_LOCATION}/${DATA_FILE} -C ${POCKET_WORKDIR}
   chown -R ${POCKET_USER}:${POCKET_USER} ${POCKET_WORKDIR}
   rm ${DOWNLOAD_LOCATION}/${DATA_FILE}
 }
