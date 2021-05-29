@@ -2,7 +2,9 @@
 
 
 YOUR_POCKET_HOME_DIR
+
 YOUR_NODE_MONIKER
+
 YOUR_NODE_PUBLIC_IP
 
-Fastsync = v0
+**Note**: The FastSync version used is v0!
