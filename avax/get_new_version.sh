@@ -1,4 +1,4 @@
-VERSION=1.6.1
+VERSION=1.7.0
 
 wget https://github.com/ava-labs/avalanchego/releases/download/v${VERSION}/avalanchego-linux-amd64-v${VERSION}.tar.gz
 tar -xzvf avalanchego-linux-amd64-v${VERSION}.tar.gz
