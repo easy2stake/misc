@@ -13,3 +13,4 @@ mv blockstore-new.db blockstore.db
 
 systemctl start pocket
 systemctl status --no-pager pocket
+df -h
