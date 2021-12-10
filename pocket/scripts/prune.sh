@@ -28,6 +28,8 @@ prune_now(){
 disk_used=$(df -h / | grep /$ | xargs | cut -d" " -f 5 | tr -d '%')
 if (( $disk_used > 80 ))
 then
-  echo "Disk used: $disk_used.\nWe'll continue pruning."
+  echo -e "-> Disk used: $disk_used.\nWe'll continue pruning."
   prune_now $PRUNE_HEIGHT
+else
+  echo -e "Disk used: $disk_used/\nPruning not needed."
 fi
