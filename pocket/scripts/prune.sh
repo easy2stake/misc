@@ -11,7 +11,7 @@ prune_now(){
   systemctl stop pocket
   cd $DATA_DIR
 
-  wget https://github.com/easy2stake/misc/raw/main/pocket/prune
+  wget --quiet https://github.com/easy2stake/misc/raw/main/pocket/prune
   chmod 700 prune
   chown pocket prune
   sudo -u pocket ./prune $1 .
