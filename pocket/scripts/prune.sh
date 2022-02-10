@@ -28,8 +28,12 @@ prune_now(){
 disk_used=$(df -h / | grep /$ | xargs | cut -d" " -f 5 | tr -d '%')
 if (( $disk_used > 80 ))
 then
-  echo -e "-> Disk used: $disk_used.\nWe'll continue pruning."
-  prune_now $PRUNE_HEIGHT
+    if [[ `tail -n 30 /var/log/nginx/access.log | grep -q -i axios; echo $?` -eq 1 ]]; then
+      echo -e "->No relays detected.\nDisk used: $disk_used.\nWe'll continue pruning."
+      prune_now $PRUNE_HEIGHT
+    else
+      echo "Pocket relays detected on node: `hostname`"
+    fi
 else
   echo -e "Disk used: $disk_used/\nPruning not needed."
 fi
