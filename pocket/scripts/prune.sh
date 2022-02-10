@@ -26,7 +26,7 @@ prune_now(){
 
 # Main section
 disk_used=$(df -h / | grep /$ | xargs | cut -d" " -f 5 | tr -d '%')
-if (( $disk_used > 80 ))
+if (( $disk_used > 85 ))
 then
     if [[ `tail -n 30 /var/log/nginx/access.log | grep -q -i axios; echo $?` -eq 1 ]]; then
       echo -e "->No relays detected.\nDisk used: $disk_used.\nWe'll continue pruning."
