@@ -29,11 +29,11 @@ disk_used=$(df -h / | grep /$ | xargs | cut -d" " -f 5 | tr -d '%')
 if (( $disk_used > 85 ))
 then
     if [[ `tail -n 30 /var/log/nginx/access.log | grep -q -i axios; echo $?` -eq 1 ]]; then
-      >&2 echo -e "`hostname` -> No relays detected.\nDisk used: $disk_used.\nWe'll continue pruning."
+      >&2 echo -e "`hostname` -> Code:0 | No relays detected | Disk used: $disk_used. | We'll continue pruning."
       prune_now $PRUNE_HEIGHT
     else
-      >&2 echo "`hostname` -> Pocket relays detected on node: `hostname`"
+      >&2 echo "`hostname` -> Code:1 | Pocket relays detected on node: `hostname` | Cannot prune. Try again later."
     fi
 else
-  >&2 echo -e "`hostname` -> Disk used: $disk_used/\nPruning not needed."
+  >&2 echo -e "`hostname` -> Code:10 | Disk used: $disk_used | Pruning not needed."
 fi
