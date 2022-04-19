@@ -28,7 +28,7 @@ prune_now(){
 disk_used=$(df -h / | grep /$ | xargs | cut -d" " -f 5 | tr -d '%')
 if (( $disk_used > 91 ))
 then
-    if [[ `tail -n 30 /var/log/nginx/access.log | grep -q -i axios; echo $?` -eq 1 ]]; then
+    if [[ `tail -n 30 /var/log/nginx/access.log | grep -q -i "node-fetch"; echo $?` -eq 1 ]]; then
       >&2 echo -e "`hostname` -> \t| Code:0 \t| No relays detected\t| Disk used: $disk_used.\t| We'll continue pruning."
       prune_now $PRUNE_HEIGHT
     else
