@@ -26,6 +26,14 @@ prune_now(){
 
 # Main section
 disk_used=$(df -h / | grep /$ | xargs | cut -d" " -f 5 | tr -d '%')
+space_avail=$(df -h / | grep /$ | xargs | cut -d" " -f 4 | tr -d 'G' | cut -d "." -f 1)
+
+if (( $space_avail < 12 ))
+then
+  >&2 echo -e "`hostname` -> \t| Code:99 \t| There is not enoguh space (${space_avail}G)"
+  exit 99
+fi
+
 if (( $disk_used > 91 ))
 then
     if [[ `tail -n 30 /var/log/nginx/access.log | grep -q -i "node-fetch"; echo $?` -eq 1 ]]; then
